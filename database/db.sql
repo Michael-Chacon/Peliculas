@@ -51,4 +51,8 @@ INNER JOIN  actores_peliculas ap ON id_pelicula = 11
 INNER JOIN actores a ON a.id = ap.id_actor
 WHERE p.id = 11; 
 
+SELECT ap.*, a.nombre FROM actores_peliculas ap
+INNER JOIN actores a ON a.id = ap.id_actor
+WHERE ap.id_pelicula = 10;
+
 

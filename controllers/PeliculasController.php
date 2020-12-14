@@ -65,13 +65,10 @@ class PeliculasController
           }
           public function ver()
           {
-                    var_dump($_GET);
                     $pelis = new Pelicula();
                     $pelis->setId($_GET['id']);
                     $p = $pelis->verAlone();
-                    var_dump($p);
                     $a = $pelis->verActor();
-                    var_dump($a);
 
                     require_once 'views/peliculas/pelicula.php';
 

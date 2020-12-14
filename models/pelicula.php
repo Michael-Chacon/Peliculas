@@ -117,34 +117,18 @@ class Pelicula
 
           public function verAlone()
           {
-                    $guardar = $this->db->query("SELECT *  FROM pelicula  WHERE  id = '{$this->getId()}';");
+                    $sql     = "SELECT * FROM pelicula  WHERE id = '{$this->getId()}';";
+                    $guardar = $this->db->query($sql);
                     return $guardar->fetch_object();
+
           }
 
           public function verActor()
           {
-
-                    $id_actor = $this->db->query("SELECT id_actor FROM actores_peliculas WHERE id_pelicula = '{$this->getId()}'");
-                    $cont     = 0;
-                    $b        = array();
-                    while ($ac = $id_actor->fetch_object()) {
-                              $c     = $cont++;
-                              $b[$c] = $ac->id_actor;
-                    }
-                    var_dump($b);
-                    var_dump($cont);
-                    echo 'nombres';
-                    $contador = 0;
-                    $nombre   = array();
-                    foreach ($b as $value) {
-                              $m          = $contador++;
-                              $consulta   = $this->db->query("SELECT nombre FROM actores WHERE id = $b[$m]");
-                              $nombre[$m] = $consulta->fetch_object();
-                    }
-                    $k = $consulta->fetch_object();
-                    // var_dump($nombre);
-                    // die();
-                    return $nombre;
+                    $guardar = $this->db->query("SELECT ap.*, a.nombre FROM actores_peliculas ap
+																INNER JOIN actores a ON a.id = ap.id_actor
+																WHERE ap.id_pelicula = '{$this->getId()}';");
+                    return $guardar;
           }
 
 } //fin de la clase

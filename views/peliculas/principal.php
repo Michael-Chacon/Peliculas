@@ -1,5 +1,7 @@
 <h1>Peliculas ramdom</h1>
 
+
+
 <?php while ($pelicula = $pelis->fetch_object()): ?>
  <div class="product">
                 <a href="<?=base_url?>Peliculas/ver&id=<?=$pelicula->id?>">
