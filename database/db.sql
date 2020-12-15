@@ -6,6 +6,7 @@ CREATE TABLE pelicula(
 		titulo varchar(255) not null,
 		descipcion text not null,
 		año int(10) not null,
+		genero varchar(5) not null, 
 		CONSTRAINT pk_pelicula PRIMARY KEY (id)
 )ENGINE=InnoDb;
 
@@ -54,5 +55,12 @@ WHERE p.id = 11;
 SELECT ap.*, a.nombre FROM actores_peliculas ap
 INNER JOIN actores a ON a.id = ap.id_actor
 WHERE ap.id_pelicula = 10;
+
+SELECT p.*,  a.nombre  AS 'actor' FROM pelicula p
+INNER JOIN actores_peliculas ap ON ap.id_pelicula = p.id
+INNER JOIN actores a ON a.id = 5
+WHERE  ap.id_actor = 5;
+
+
 
 

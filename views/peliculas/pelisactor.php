@@ -1,8 +1,6 @@
-<h1>Peliculas ramdom</h1>
+<h1>Peliculas de <?=$nombre_actor->nombre?></h1>
 
-
-
-<?php while ($pelicula = $pelis->fetch_object()): ?>
+<?php while ($pelicula = $peliculas->fetch_object()): ?>
  <div class="product">
                 <a href="<?=base_url?>Peliculas/ver&id=<?=$pelicula->id?>">
                     <img src="<?=base_url?>uploads/image/<?=$pelicula->img?>" alt="" class="image">

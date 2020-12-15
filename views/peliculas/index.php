@@ -24,10 +24,10 @@ if (!isset($_SESSION['actores'])) {
 if (isset($generos)):
           while ($genero = $generos->fetch_object()):
           ?>
-	<option value="<?=$genero->nombre?>">
-	<?=$genero->nombre?>
-	</option>
-		<?php
+				<option value="<?=$genero->nombre?>">
+				<?=$genero->nombre?>
+				</option>
+					<?php
 endwhile;
 endif;
 ?>
@@ -39,11 +39,11 @@ endif;
 if (isset($actores)):
           while ($actor = $actores->fetch_object()):
           ?>
-																<div class="act">
-																<input type="checkbox" name="actor[<?=$actor->id;?>]" value="<?=$actor->id;?>">
-																<label for="enero" ><?=$actor->nombre?></label>
-																</div>
-																<?php
+			<div class="act">
+			<input type="checkbox" name="actor[<?=$actor->id;?>]" value="<?=$actor->id;?>">
+				<label for="enero" ><?=$actor->nombre?></label>
+			</div>
+			<?php
 endwhile;
 endif;?>
 <br>

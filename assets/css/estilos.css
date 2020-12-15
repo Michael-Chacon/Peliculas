@@ -8,6 +8,33 @@
 body {
       color: white;
 }
+.info {
+      width: 65%;
+      padding: 10px;
+      display: block;
+      float: right;
+      /*border: 1px solid red;*/
+}
+.info-img {
+      float: left;
+      width: 30%;
+}
+.titulo {
+      font-family: arial;
+      font-weight: normal;
+}
+.g {
+      color: #04a1f4;
+}
+p {
+      font-family: arial;
+      font-size: 14px;
+      font-weight: normal;
+}
+.actores {
+      text-decoration: none;
+      padding: 3px;
+}
 .act {
       float: left;
       text-align: center;

@@ -11,6 +11,7 @@ class PeliculasController
                     $pelis        = $allpeliculas->pelis_ramdom();
                     require_once 'views/peliculas/principal.php';
           }
+
           public function index()
           {
                     $genero  = new Categoria();
@@ -31,6 +32,7 @@ class PeliculasController
                               $fecha               = $_POST['fecha'];
                               $genero              = $_POST['genero'];
                               $_SESSION['actores'] = $_POST['actor'];
+                              // $_SESSION['generos'] = $_POST['genero'];
 
                               if ($nombre && $descripcion && $fecha && $genero) {
                                         $pelicula = new Pelicula();
@@ -58,6 +60,7 @@ class PeliculasController
                                         if ($ok) {
                                                   unset($_SESSION['actores']);
                                         }
+
                               }
                               //giardar la imagen
                     }
@@ -72,5 +75,21 @@ class PeliculasController
 
                     require_once 'views/peliculas/pelicula.php';
 
+          }
+
+          public function pactor()
+          {
+                    if (isset($_GET)) {
+                              $id_actor = $_GET['id'];
+                              $actor    = new Actor();
+                              $actor->setId($id_actor);
+                              $nombre_actor = $actor->getAlone();
+
+                              $pelicula = new Pelicula();
+                              $pelicula->setId($id_actor);
+                              $peliculas = $pelicula->pelis_actor();
+
+                    }
+                    require_once 'views/peliculas/pelisactor.php';
           }
 } //fin de la clase

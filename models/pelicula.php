@@ -80,7 +80,8 @@ class Pelicula
 
           public function save()
           {
-                    $sql     = "INSERT INTO pelicula VALUES(null, '{$this->getNombre()}', '{$this->getDescripcion()}', '{$this->getImg()}', '{$this->getFecha()}', '{$this->getGenero()}');";
+                    $sql = "INSERT INTO pelicula VALUES(null, '{$this->getNombre()}', '{$this->getDescripcion()}', '{$this->getImg()}', '{$this->getFecha()}', '{$this->getGenero()}');";
+                    var_dump($sql);
                     $guardar = $this->db->query($sql);
 
                     $resutado = false;
@@ -99,7 +100,6 @@ class Pelicula
                     foreach ($_SESSION['actores'] as $value) {
                               $insert  = "INSERT INTO actores_peliculas VALUES($value, $pelicula_id);";
                               $guardar = $this->db->query($insert);
-
                     }
                     $result = false;
                     if ($guardar) {
@@ -110,7 +110,7 @@ class Pelicula
 
           public function pelis_ramdom()
           {
-                    $sql     = "SELECT *  FROM pelicula ORDER BY RAND() LIMIT 6";
+                    $sql     = "SELECT *  FROM pelicula";
                     $guardar = $this->db->query($sql);
                     return $guardar;
           }
@@ -125,9 +125,19 @@ class Pelicula
 
           public function verActor()
           {
-                    $guardar = $this->db->query("SELECT ap.*, a.nombre FROM actores_peliculas ap
-																INNER JOIN actores a ON a.id = ap.id_actor
-																WHERE ap.id_pelicula = '{$this->getId()}';");
+                    $guardar = $this->db->query("SELECT ap.*, a.* FROM actores_peliculas ap
+                                                                                INNER JOIN actores a ON a.id = ap.id_actor
+                                                                                WHERE ap.id_pelicula = '{$this->getId()}';");
+                    return $guardar;
+          }
+
+          public function pelis_actor()
+          {
+                    $sql = "SELECT p.* FROM pelicula p
+                         INNER JOIN actores_peliculas ap ON ap.id_pelicula = p.id
+                         WHERE  ap.id_actor = '{$this->getId()}';";
+
+                    $guardar = $this->db->query($sql);
                     return $guardar;
           }
 
