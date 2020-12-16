@@ -5,7 +5,10 @@
 	<br>
 <p>Sinopsis:</p>
 <p><?=$p->descipcion?></p>
-<p class="g"><?=$p->genero?></p>
+<p class="g">Generos:</p>
+<?php while ($generos = $genero->fetch_object()): ?>
+	<a href="#" class="actores"><?=$generos->nombre?>   | </a>
+	<?php endwhile;?>
 <p>Actores:</p>
 <?php while ($actores = $a->fetch_object()): ?>
 	<a href="<?=base_url?>Peliculas/pactor&id=<?=$actores->id?>" class="actores"><?=$actores->nombre?>   | </a>

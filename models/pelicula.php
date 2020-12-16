@@ -113,23 +113,6 @@ class Pelicula
                     return $result;
           }
 
-          // public function generos_peliculas()
-          // {
-          //           $sql         = "SELECT LAST_INSERT_ID() AS 'pelicula' ";
-          //           $consulta    = $this->db->query($sql);
-          //           $pelicula_id = $consulta->fetch_object()->pelicula;
-
-          //           foreach ($_SESSION['generos'] as $value) {
-          //                     $insert  = "INSERT INTO generos_peliculas VALUES($value, $pelicula_id);";
-          //                     $guardar = $this->db->query($insert);
-          //           }
-          //           $result = false;
-          //           if ($guardar) {
-          //                     $result = true;
-          //           }
-          //           return $result;
-          // }
-
           public function pelis_ramdom()
           {
                     $sql     = "SELECT *  FROM pelicula";
@@ -151,6 +134,14 @@ class Pelicula
                                                                                 INNER JOIN actores a ON a.id = ap.id_actor
                                                                                 WHERE ap.id_pelicula = '{$this->getId()}';");
                     return $guardar;
+          }
+
+          public function getGeneros()
+          {
+                    $consultar = $this->db->query("SELECT gp.*, g.nombre FROM generos_peliculas gp
+                                                                 INNER JOIN generos g ON g.id = gp.id_genero
+                                                                 WHERE gp.id_pelicula = '{$this->getId()}';");
+                    return $consultar;
           }
 
           public function pelis_actor()

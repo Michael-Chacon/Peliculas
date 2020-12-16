@@ -61,6 +61,10 @@ INNER JOIN actores_peliculas ap ON ap.id_pelicula = p.id
 INNER JOIN actores a ON a.id = 5
 WHERE  ap.id_actor = 5;
 
+SELECT gp.*, g.nombre FROM generos_peliculas gp
+INNER JOIN generos g ON g.id = gp.id_genero
+WHERE gp.id_pelicula = 18;
+
 
 
 

@@ -68,12 +68,14 @@ class PeliculasController
                     }
                     header('Location:' . base_url . 'Peliculas/index');
           }
+          //metod para ver la info de 1 sola pelicua y tambien trae los actores de esa peli
           public function ver()
           {
                     $pelis = new Pelicula();
                     $pelis->setId($_GET['id']);
-                    $p = $pelis->verAlone();
-                    $a = $pelis->verActor();
+                    $p      = $pelis->verAlone();
+                    $a      = $pelis->verActor();
+                    $genero = $pelis->getGeneros();
 
                     require_once 'views/peliculas/pelicula.php';
 
