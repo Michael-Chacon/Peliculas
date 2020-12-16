@@ -4,7 +4,7 @@
             <meta charset="utf-8">
                   <meta content="width=device-width, initial-scale=1.0" name="viewport">
                         <title>
-                              Pelisplus
+                              Pelis+
                         </title>
                         <link rel="stylesheet" href="<?=base_url?>assets/css/estilos.css">
                   </meta>
@@ -18,7 +18,7 @@
                   <nav id="menu">
                         <ul>
                               <li class="pagina">
-                                   <h2> Pelisplus.net</h2>
+                                   <h2> Pelis+.net</h2>
                               </li>
                               <li>
                                     <a href="<?=base_url?>">

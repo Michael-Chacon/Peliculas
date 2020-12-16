@@ -7,7 +7,7 @@
                     <h4><?=$pelicula->titulo?></h4>
                     </a>
                     <p><?=$pelicula->genero?></p>
-                    <a href="<?=base_url?>" class="button"><?=$pelicula->año?></a>
+                    <a href="<?=base_url?>>" class="button"><?=$pelicula->año?></a>
             </div>
 
         <?php endwhile;?>

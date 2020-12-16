@@ -2,6 +2,7 @@
 require_once 'models/pelicula.php';
 require_once 'models/actor.php';
 require_once 'models/categoria.php';
+require_once 'models/categoria.php';
 
 class PeliculasController
 {
@@ -95,5 +96,18 @@ class PeliculasController
 
                     }
                     require_once 'views/peliculas/pelisactor.php';
+          }
+          public function pgenero()
+          {
+                    if (isset($_GET['id'])) {
+                              $id_genero = $_GET['id'];
+                              $genero    = new Categoria();
+                              $genero->setId($id_genero);
+                              $gen      = $genero->infogenero();
+                              $pelicula = new Pelicula();
+                              $pelicula->setId($id_genero);
+                              $pelis = $pelicula->pelis_genero();
+                    }
+                    require_once 'views/peliculas/pelisgenero.php';
           }
 } //fin de la clase

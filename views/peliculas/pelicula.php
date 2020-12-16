@@ -7,7 +7,7 @@
 <p><?=$p->descipcion?></p>
 <p class="g">Generos:</p>
 <?php while ($generos = $genero->fetch_object()): ?>
-	<a href="#" class="actores"><?=$generos->nombre?>   | </a>
+	<a href="<?=base_url?>Peliculas/pgenero&id=<?=$generos->id?>" class="actores"><?=$generos->nombre?>   | </a>
 	<?php endwhile;?>
 <p>Actores:</p>
 <?php while ($actores = $a->fetch_object()): ?>

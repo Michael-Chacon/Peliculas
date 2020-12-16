@@ -2,6 +2,7 @@
 
 class Categoria
 {
+          public $id;
           public $nombre;
           public $db;
 
@@ -11,12 +12,22 @@ class Categoria
           }
 
           //METODOS GET
+          public function getId()
+          {
+                    return $this->id;
+          }
+
           public function getNombre()
           {
                     return $this->nombre;
           }
 
           //METODOS SET
+          public function setId($id)
+          {
+                    $this->id = $id;
+          }
+
           public function setNombre($nombre)
           {
                     $this->nombre = $nombre;
@@ -45,6 +56,13 @@ class Categoria
                               $resultado = $guardar;
                     }
                     return $resultado;
+          }
+
+          public function infogenero()
+          {
+                    $sql     = "SELECT * FROM generos WHERE id = '{$this->getId()}';";
+                    $guardar = $this->db->query($sql);
+                    return $guardar->fetch_object();
           }
 
 } //fin de la clase

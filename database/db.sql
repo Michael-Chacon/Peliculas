@@ -66,5 +66,13 @@ INNER JOIN generos g ON g.id = gp.id_genero
 WHERE gp.id_pelicula = 18;
 
 
+SELECT p.* FROM pelicula p 
+INNER JOIN generos_peliculas gp ON gp.id_pelicula = p.id
+WHERE gp.id_genero = 1;
+
+
+
+
+
 
 
