@@ -19,19 +19,20 @@ if (!isset($_SESSION['actores'])) {
 	<input type="text" name="fecha">
 
 	<label for="genero">Genero</label>
-	<select name="genero">
+
 		<?php
 if (isset($generos)):
           while ($genero = $generos->fetch_object()):
           ?>
-				<option value="<?=$genero->nombre?>">
-				<?=$genero->nombre?>
-				</option>
-					<?php
+			<div class="act">
+		<input type="checkbox" name="genero[<?=$genero->id;?>]" value="<?=$genero->id;?>">
+		<label><?=$genero->nombre?></label>
+		</div>
+		<?php
 endwhile;
 endif;
 ?>
-	</select>
+
 	<br>
 	<hr>
 	<h2>Actores</h2>
@@ -39,11 +40,11 @@ endif;
 if (isset($actores)):
           while ($actor = $actores->fetch_object()):
           ?>
-			<div class="act">
-			<input type="checkbox" name="actor[<?=$actor->id;?>]" value="<?=$actor->id;?>">
-				<label for="enero" ><?=$actor->nombre?></label>
-			</div>
-			<?php
+									<div class="act">
+									<input type="checkbox" name="actor[<?=$actor->id;?>]" value="<?=$actor->id;?>">
+										<label for="enero" ><?=$actor->nombre?></label>
+									</div>
+									<?php
 endwhile;
 endif;?>
 <br>

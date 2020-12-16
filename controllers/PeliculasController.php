@@ -27,19 +27,19 @@ class PeliculasController
           {
 
                     if (isset($_POST)) {
-                              $nombre              = $_POST['nombre'];
-                              $descripcion         = $_POST['descripcion'];
-                              $fecha               = $_POST['fecha'];
-                              $genero              = $_POST['genero'];
+                              $nombre      = $_POST['nombre'];
+                              $descripcion = $_POST['descripcion'];
+                              $fecha       = $_POST['fecha'];
+                              // $genero              = $_POST['genero'];
                               $_SESSION['actores'] = $_POST['actor'];
-                              // $_SESSION['generos'] = $_POST['genero'];
+                              $_SESSION['generos'] = $_POST['genero'];
 
-                              if ($nombre && $descripcion && $fecha && $genero) {
+                              if ($nombre && $descripcion && $fecha) {
                                         $pelicula = new Pelicula();
                                         $pelicula->setNombre($nombre);
                                         $pelicula->setDescripcion($descripcion);
                                         $pelicula->setFecha($fecha);
-                                        $pelicula->setGenero($genero);
+                                        // $pelicula->setGenero($genero);
 
                                         if (isset($_FILES['imagen'])) {
                                                   $file     = $_FILES['imagen'];
@@ -56,9 +56,11 @@ class PeliculasController
                                                   }
                                         } //img
                                         $pelicula->save();
-                                        $ok = $pelicula->pelicula_actor();
+
+                                        $ok = $pelicula->generos_actor();
                                         if ($ok) {
                                                   unset($_SESSION['actores']);
+                                                  unset($_SESSION['generos']);
                                         }
 
                               }

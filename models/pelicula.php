@@ -80,8 +80,7 @@ class Pelicula
 
           public function save()
           {
-                    $sql = "INSERT INTO pelicula VALUES(null, '{$this->getNombre()}', '{$this->getDescripcion()}', '{$this->getImg()}', '{$this->getFecha()}', '{$this->getGenero()}');";
-                    var_dump($sql);
+                    $sql     = "INSERT INTO pelicula VALUES(null, '{$this->getNombre()}', '{$this->getDescripcion()}', '{$this->getImg()}', '{$this->getFecha()}', null);";
                     $guardar = $this->db->query($sql);
 
                     $resutado = false;
@@ -91,22 +90,45 @@ class Pelicula
                     return $resutado;
           }
 
-          public function pelicula_actor()
+          public function generos_actor()
           {
                     $sql         = "SELECT LAST_INSERT_ID() AS 'actor' ";
                     $consulta    = $this->db->query($sql);
                     $pelicula_id = $consulta->fetch_object()->actor;
 
                     foreach ($_SESSION['actores'] as $value) {
-                              $insert  = "INSERT INTO actores_peliculas VALUES($value, $pelicula_id);";
-                              $guardar = $this->db->query($insert);
+                              $insert        = "INSERT INTO actores_peliculas VALUES($value, $pelicula_id);";
+                              $guardar_actor = $this->db->query($insert);
+                    }
+                    foreach ($_SESSION['generos'] as $value) {
+                              $gen            = "INSERT INTO generos_peliculas VALUES($value, $pelicula_id);";
+                              $guardar_genero = $this->db->query($gen);
                     }
                     $result = false;
-                    if ($guardar) {
+                    if ($guardar_actor && $guardar_genero) {
                               $result = true;
                     }
+                    // var_dump($result); rama generos
+                    // die();
                     return $result;
           }
+
+          // public function generos_peliculas()
+          // {
+          //           $sql         = "SELECT LAST_INSERT_ID() AS 'pelicula' ";
+          //           $consulta    = $this->db->query($sql);
+          //           $pelicula_id = $consulta->fetch_object()->pelicula;
+
+          //           foreach ($_SESSION['generos'] as $value) {
+          //                     $insert  = "INSERT INTO generos_peliculas VALUES($value, $pelicula_id);";
+          //                     $guardar = $this->db->query($insert);
+          //           }
+          //           $result = false;
+          //           if ($guardar) {
+          //                     $result = true;
+          //           }
+          //           return $result;
+          // }
 
           public function pelis_ramdom()
           {
