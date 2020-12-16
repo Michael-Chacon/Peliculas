@@ -36,12 +36,6 @@
                             Crear Categoria
                         </a>
                     </li>
-
-                      <li>
-                        <a href="#">
-                            mis pedidos
-                        </a>
-                    </li>
                 <?php endif;?>
                       <li>
                         <a href="<?=base_url?>Usuario/logout">

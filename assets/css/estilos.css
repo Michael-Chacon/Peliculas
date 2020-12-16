@@ -168,9 +168,15 @@ a:hover {
       margin-top: 20px;
       margin-bottom: 20px;
 }
-#lateral ul li {
+#lateral ul li a {
       list-style: square;
       margin-left: 20px;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      background: #07223E;
+      padding: 5px;
+      margin-bottom: 5px;
 }
 /*formularios*/
 
@@ -250,6 +256,7 @@ label, input[type="button"], input[type="submit"], button {
 
 .product {
       width: 20%;
+      height: 310px;
       border-right: 1px solid #ccc;
       float: left;
       margin-left: 10px;
